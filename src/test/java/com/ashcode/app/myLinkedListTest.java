@@ -10,9 +10,9 @@ import static org.junit.Assert.*;
  * Created by anatarajan on 11/15/15.
  */
 
-public class LinkedListTest {
+public class myLinkedListTest {
 
-    LinkedList list;
+    myLinkedList list;
     Node someNode;
     Node anotherNode;
     Node oneMoreNode;
@@ -23,7 +23,7 @@ public class LinkedListTest {
         anotherNode = new Node(11, null);
         oneMoreNode = new Node(12, null);
 
-        list = new LinkedList(someNode);
+        list = new myLinkedList(someNode);
         list.add(anotherNode);
         list.add(oneMoreNode);
     }

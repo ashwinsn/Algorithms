@@ -1,0 +1,89 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+
+ type ahead search
+
+ search box: ala
+ alan
+
+
+ ---
+ alan
+ alice
+ jane
+ jenny
+ tom
+ tina
+ bob
+ ...
+
+
+ */
+
+
+
+
+/*
+a,b,j,t
+a 2,4 return sublist everytime from the sorted list -- expensive
+--> b list of references arraylist of words
+j
+t
+*/
+
+
+/*
+Hash table
+a start, end
+b start,end
+
+26
+26*26
+26*26*26
+
+
+L + L^2 + L^3 + .. +
+
+key (ala)
+value(start, end) positions in the sorted array.
+
+#of keys in the hashtable * O(n) - n is the size of the search box
+*/
+
+//search box O(nlogn)
+
+
+
+//Keep the search box in a sorted array
+//For each possible prefix store the start and end position in the array
+
+/*
+alan
+ alice
+ jane
+ jenny
+ tom
+ tina
+ bob
+ ...
+ */
+//alan, jenny, alice, bob, adam
+
+//a,al,ala,alan
+
+public HashMap<String, ArrayList<String>> buildHashMapForString(Char[] someString){
+
+}
+
+public HashMap<String, ArrayList<String>> buildHashMapLookUp(ArrayList<String> searchBox){
+  String currentString = searchBox.get(0);
+  HashMap<String, ArrayList<String>> currentStringPrefixHashMap = buildHashMapForString(currentString.toCharArray());
+
+}
+

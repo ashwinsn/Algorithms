@@ -1,0 +1,68 @@
+[1,3,6,7]
+I: 7 3 = 10
+U: 6 1 = 7
+
+Q1:
+Assuming greedy
+
+even
+
+[1,3,6,7]
+
+ 7,52,3,1
+
+ min(score([52,3,1]),score([7,52,3]))
+
+ .sublist(i,j)
+
+ 7 3
+ 52 1
+
+I: 1 52 = 53
+U: 7 3 = 10
+
+Q2,
+// 3, 1
+//scorewithoutfirst = 1
+//scorewithoutlast = 3
+// 3 +
+int score(ArrayList<Integer> cards)
+//returns the maximum possible value if I play now
+// assuming both player are maximizing their return
+// the return of the current player / first player
+{
+
+if(cards.size() == 0 || cards == null){
+  return 0;
+}
+if(cards.size() == 1){
+  return cards.get(0);
+}
+
+int currentScore = 0;
+int scoreOfElementsWithoutFirst = score(cards.subList(1,cards.size()));
+int scoreOfElementsWithoutLast = score(cards.subList(0,cards.size()-1));
+
+if(scoreOfElementsWithoutFirst < scoreOfElementsWithoutLast){
+   currentScore = cards.get(0) + score(listAfterOtherUserPicks(cards.subList(1,cards.size())));
+} else {
+  currentScore = cards.get(cards.size()-1) + score(listAfterOtherUserPicks(cards.subList(0,cards.size()-1)));
+}
+
+return currentScore;
+}
+
+
+ArrayList<Integer> listAfterOtherUserPicks(ArrayList<Integer> cards){
+   if(cards.size() == 1){
+     return null;
+   }
+
+int scoreOfElementsWithoutFirst = score(cards.subList(1,cards.size()));
+int scoreOfElementsWithoutLast = score(cards.subList(0,cards.size()-1));
+
+if(scoreOfElementsWithoutFirst < scoreOfElementsWithoutLast){
+   return cards.subList(1,cards.size());
+} else {
+  return cards.subList(0,cards.size()-1);
+}

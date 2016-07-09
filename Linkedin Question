@@ -1,0 +1,113 @@
+/**
+ * Given a nested list of integers, returns the sum of all integers in the list weighted by their depth
+ * For example, given the list {{1,1},2,{1,1}} the function should return 10 (four 1's at depth 2, one 2 at depth 1)
+ * Given the list {1,{4,{6}}} the function should return 27 (one 1 at depth 1, one 4 at depth 2, and one 6 at depth 3)
+ */
+ //{1,1}
+ //{1}
+
+ //{{{{2}}}}, 3} 11
+ //2 elements in the
+
+ //getList({{{{2}}}})
+ //returns {{{2}}} ??
+
+public int getValue(NestedInteger integer){
+   int currentDepth = 0;
+   while(!integer.isInteger()){
+     currentDepth++;
+     integer = get
+   }
+
+   return currentDepth.
+
+}
+
+public int depthSum (List<NestedInteger> input)
+{
+    /*
+    //Implementation here
+    int currentSum = 0;
+    for(NestedInteger integer : input){
+       currentSum += getValue(integer);
+       }
+     return currentSum;
+     */
+     int currentSum = 0;
+     for(NestedInteger integer : input)
+     {
+        if(input.isInteger())
+          currentSum += input.getInteger()
+        else {
+           findDepth(
+           depthSum(integer)
+        }
+     }
+
+
+
+
+}
+
+/**
+ * This is the interface that represents nested lists.
+ * You should not implement it, or speculate about its implementation.
+ */
+public interface NestedInteger
+{
+    /** @return true if this NestedInteger holds a single integer, rather than a nested list */
+    boolean isInteger();
+    //
+
+    /** @return the single integer that this NestedInteger holds, if it holds a single integer
+     * Return null if this NestedInteger holds a nested list */
+    Integer getInteger();
+
+    /** @return the nested list that this NestedInteger holds, if it holds a nested list
+     * Return null if this NestedInteger holds a single integer */
+    List<NestedInteger> getList();
+}
+
+
+
+
+
+
+
+/*
+ * Returns true if the input string is a number and false otherwise.
+ * Note that you canNOT use Double.toDouble(), but need to parse the input string character-by-character
+ */
+
+public boolean isNumber(String toTest)
+{
+    // implementation here
+    if(toTest == null)
+      return false;
+
+    char[] strArray = toTest.toArray();
+    int start = 0;
+    if(strArray[0] == '-'){
+       start = 1;
+    }
+
+    int dotCount = 0;
+    for(int i=start; i<strArray.length; i++){
+       if(c >= '0' && c <= '9')
+         continue;
+       else if (c == '.'){
+         dotCount++;
+         if(dotCount > 1)
+           return false;
+       } else
+         return false;
+    }
+    return true;
+}
+
+
+.23234 valid
+41231. valid
+23423.323 valid
+-23423.32
+000765

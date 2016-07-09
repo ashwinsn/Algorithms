@@ -25,7 +25,7 @@ public class AllPathsThatSumToaNumber {
         return outputList;
     }
 
-    private void checkIfPathLeadsToSum(int currentSum, ArrayList<Integer> currentPath, TreeNode currentNode) {
+    private void checkIfPathLeadsToSum(int currentSum, ArrayList<Integer> currentPath, BasicTreeNode currentNode) {
         currentPath.add(currentNode.data);
         currentSum += currentNode.data;
         if(currentSum == finalSum){

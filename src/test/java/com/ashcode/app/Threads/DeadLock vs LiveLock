@@ -1,0 +1,67 @@
+All the content and examples here are from
+
+Operating Systems: Internals and Design Principles
+William Stallings
+8º Edition
+
+Deadlock: A situation in which two or more processes are unable to proceed because each is waiting for one the others to do something.
+
+For example, consider two processes, P1 and P2, and two resources, R1 and R2. Suppose that each process needs access to both resources to perform part of its function. Then it is possible to have the following situation: the OS assigns R1 to P2, and R2 to P1. Each process is waiting for one of the two resources. Neither will release the resource that it already owns until it has acquired the other resource and performed the function requiring both resources. The two processes are deadlocked
+
+Livelock: A situation in which two or more processes continuously change their states in response to changes in the other process(es) without doing any useful work:
+
+Starvation: A situation in which a runnable process is overlooked indefinitely by the scheduler; although it is able to proceed, it is never chosen.
+
+Suppose that three processes (P1, P2, P3) each require periodic access to resource R. Consider the situation in which P1 is in possession of the resource, and both P2 and P3 are delayed, waiting for that resource. When P1 exits its critical section, either P2 or P3 should be allowed access to R. Assume that the OS grants access to P3 and that P1 again requires access before P3 completes its critical section. If the OS grants access to P1 after P3 has finished, and subsequently alternately grants access to P1 and P3, then P2 may indefinitely be denied access to the resource, even though there is no deadlock situation.
+
+APPENDIX A - TOPICS IN CONCURRENCY
+
+Deadlock Example
+
+If both processes set their flags to true before either has executed the while statement, then each will think that the other has entered its critical section, causing deadlock.
+
+/* PROCESS 0 */
+flag[0] = true;
+while (flag[1])
+    /* do nothing */;
+/* critical section*/;
+flag[0] = false;
+
+ /* PROCESS 1 */
+flag[1] = true;
+while (flag[0])
+    /* do nothing */;
+/* critical section*/;
+flag[1] = false;
+Livelock Example
+
+/* PROCESS 0 */
+flag[0] = true;
+while (flag[1]){
+    flag[0] = false;
+    /*delay */;
+    flag[0] = true;
+}
+/*critical section*/;
+flag[0] = false;
+
+/* PROCESS 1 */
+flag[1] = true;
+while (flag[0]) {
+    flag[1] = false;
+    /*delay */;
+    flag[1] = true;
+}
+/* critical section*/;
+flag[1] = false;
+[...] consider the following sequence of events:
+
+P0 sets flag[0] to true.
+P1 sets flag[1] to true.
+P0 checks flag[1].
+P1 checks flag[0].
+P0 sets flag[0] to false.
+P1 sets flag[1] to false.
+P0 sets flag[0] to true.
+P1 sets flag[1] to true.
+This sequence could be extended indefinitely, and neither process could enter its critical section. Strictly speaking, this is not deadlock, because any alteration in the relative speed of the two processes will break this cycle and allow one to enter the critical section. This condition is referred to as livelock. Recall that deadlock occurs when a set of processes wishes to enter their critical sections but no process can succeed. With livelock, there are possible sequences of executions that succeed, but it is also possible to describe one or more execution sequences in which no process ever enters its critical section.

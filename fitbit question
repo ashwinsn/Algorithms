@@ -1,0 +1,90 @@
+//o-o-o-o-o-o-o-o
+//o-o-o-o-o
+//o
+//o-o
+//o-o-o
+//o-o-o....o-o // 10000 nodes!
+
+
+/**
+ * This same code will be running on every node in the network.
+ */
+public class Node {
+
+
+    /**
+     * Sends a message to the node to the left of this node.
+     */
+    public void sendLeft(int message) {...}
+
+    /**
+     * Sends a message to the node to the right of this node.
+     */
+    public void sendRight(int message) {
+
+    }
+
+    /**
+     * Returns true if there is a node to the left of this node.
+     */
+    public boolean hasLeft() {...}
+
+    /**
+     * Returns true if there is a node to the right of this node.
+     */
+    public boolean hasRight() {...}
+
+    /**
+     * Called when the individual server/Node is started up, after network connections are established.
+     */
+    public Node() {
+        if(!hasLeft() && hasRight()){
+          sendRight(1);
+        } else if(!hasRight()){
+          System.out.println(1);
+        }
+
+
+    }
+
+    /**
+     * Called after sendLeft() is called on the machine to the right of this node.
+     * The value that sendLeft() is called with will be passed in here.
+     */
+    public void receiveRight(int message) {
+
+    }
+
+    /**
+     * Called after sendRight() is called on the machine to the left of this node.
+     * The value that sendRight() is called with will be passed in here.
+     */
+    public void receiveLeft(int message) {
+
+       if(hasRight()){
+          sendRight(1 + count);
+       } else {
+          System.out.println(1 + count);
+       }
+
+
+
+
+    }
+
+}
+
+//n1-n2-n3
+n1 - 1 n2
+n2 - waits till it hears from n1, 2 n2,n3
+n3 - waits till it hears from n2, output 3.
+
+//network delay
+
+//token
+//globally one token
+
+//n1-n2-n3-n4
+//ith node always waits to hear from i-1th node before sending to i+1th node.
+
+

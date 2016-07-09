@@ -1,11 +1,11 @@
 package com.ashcode.app;
 
-public class LinkedList {
+public class myLinkedList {
 
     Node head;
 
 
-    public LinkedList(Node head){
+    public myLinkedList(Node head){
        this.head = head;
     }
 

@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  */
 public class AllPathsThatSumToaNumberTest {
 
-    TreeNode rootNode = new TreeNode(10);
+    BasicTreeNode rootNode = new BasicTreeNode(10);
     BinaryTree someTree = new BinaryTree(rootNode);
 
     AllPathsThatSumToaNumber subject;
